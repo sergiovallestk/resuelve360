@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resuelve360 — Automatización inteligente para negocios</title>
+<meta name="description" content="Resuelve360 desarrolla soluciones de automatización con inteligencia artificial para negocios en México. Asistentes virtuales, agendamiento automático y atención 24/7.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black:   #0a0a0a;
+  --off:     #111111;
+  --border:  #1f1f1f;
+  --mid:     #2a2a2a;
+  --muted:   #555;
+  --subtle:  #888;
+  --light:   #ccc;
+  --white:   #f5f5f5;
+  --accent:  #4f8ef7;
+  --accent2: #2d6ef0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 48px;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--white);
+  letter-spacing: -0.5px;
+  text-decoration: none;
+}
+
+.logo span { color: var(--accent); }
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 14px;
+  color: var(--subtle);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--white); }
+
+.nav-cta {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--black) !important;
+  background: var(--accent);
+  padding: 8px 18px;
+  border-radius: 6px;
+  transition: opacity 0.2s !important;
+}
+
+.nav-cta:hover { opacity: 0.85; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 48px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(0,229,160,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(42px, 6vw, 80px);
+  line-height: 1.05;
+  letter-spacing: -2px;
+  max-width: 800px;
+  margin-bottom: 28px;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.hero p {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--subtle);
+  max-width: 500px;
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: var(--black);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.btn-primary:hover { opacity: 0.85; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--light);
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.btn-secondary:hover { color: var(--white); }
+
+/* STATS */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.stat {
+  background: var(--black);
+  padding: 40px 48px;
+}
+
+.stat-number {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 48px;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: var(--subtle);
+}
+
+/* SECTION BASE */
+section {
+  padding: 96px 48px;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 44px);
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  max-width: 600px;
+}
+
+.section-body {
+  font-size: 16px;
+  color: var(--subtle);
+  max-width: 520px;
+  line-height: 1.8;
+  margin-bottom: 48px;
+}
+
+/* SERVICES */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 48px;
+}
+
+.service-card {
+  background: var(--off);
+  padding: 36px;
+  transition: background 0.2s;
+}
+
+.service-card:hover { background: var(--mid); }
+
+.service-icon {
+  font-size: 28px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.service-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: var(--white);
+}
+
+.service-card p {
+  font-size: 14px;
+  color: var(--subtle);
+  line-height: 1.7;
+}
+
+/* HOW IT WORKS */
+.how {
+  background: var(--off);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 48px;
+  margin-top: 48px;
+}
+
+.step {
+  position: relative;
+}
+
+.step-num {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 64px;
+  color: var(--border);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.step h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.step p {
+  font-size: 14px;
+  color: var(--subtle);
+  line-height: 1.7;
+}
+
+/* ABOUT */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-visual {
+  background: var(--off);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 40px;
+  font-family: 'Inter', monospace;
+  font-size: 13px;
+  color: var(--subtle);
+  line-height: 2;
+}
+
+.code-comment { color: var(--muted); }
+.code-key { color: #7ec8e3; }
+.code-val { color: var(--accent); }
+.code-str { color: #f1c40f; }
+
+/* CTA */
+.cta-section {
+  text-align: center;
+  background: linear-gradient(180deg, var(--black) 0%, #0d1a14 100%);
+  border-top: 1px solid var(--border);
+}
+
+.cta-section .section-title {
+  max-width: 100%;
+  margin: 0 auto 20px;
+}
+
+.cta-section .section-body {
+  max-width: 480px;
+  margin: 0 auto 40px;
+}
+
+/* FOOTER */
+footer {
+  background: var(--off);
+  border-top: 1px solid var(--border);
+  padding: 40px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--white);
+}
+
+.footer-logo span { color: var(--accent); }
+
+.footer-legal {
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--light); }
+
+/* DIVIDER */
+.divider {
+  width: 48px;
+  height: 2px;
+  background: var(--accent);
+  margin-bottom: 32px;
+}
+
+/* WHATSAPP BOT DEMO */
+.demo-section {
+  background: var(--off);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.chat-mock {
+  background: #111;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  max-width: 360px;
+}
+
+.chat-header {
+  background: var(--mid);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.chat-avatar {
+  width: 36px; height: 36px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.chat-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.chat-status {
+  font-size: 11px;
+  color: var(--accent);
+}
+
+.chat-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 280px;
+}
+
+.bubble {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.bubble-in {
+  background: var(--mid);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+.bubble-out {
+  background: #1a3a2a;
+  border: 1px solid #1f4a33;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+  color: #cde8d8;
+}
+
+.bubble-time {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+/* FEATURE LIST */
+.feature-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--light);
+}
+
+.feature-list li::before {
+  content: '✓';
+  color: var(--accent);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  .nav-links { display: none; }
+  .hero { padding: 100px 20px 60px; }
+  section { padding: 64px 20px; }
+  .stats { grid-template-columns: 1fr; }
+  .stat { padding: 28px 20px; }
+  .about-grid, .demo-grid { grid-template-columns: 1fr; gap: 40px; }
+  footer { padding: 28px 20px; flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-label, .hero h1, .hero p, .hero-actions {
+  animation: fadeUp 0.6s ease both;
+}
+
+.hero h1    { animation-delay: 0.1s; }
+.hero p     { animation-delay: 0.2s; }
+.hero-actions { animation-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Resuelve<span>360</span></a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#como-funciona">Cómo funciona</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="https://wa.me/524431660223" target="_blank" class="nav-cta">Hablar con un asesor</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-label">Automatización · Inteligencia Artificial · México</p>
+  <h1>Tu negocio<br>responde <em>solo.</em><br>Tú creces.</h1>
+  <p>Desarrollamos soluciones de automatización con inteligencia artificial para negocios en México. Asistentes virtuales, agendamiento automático y atención 24/7 sin intervención humana.</p>
+  <div class="hero-actions">
+    <a href="https://wa.me/524431660223" target="_blank" class="btn-primary">
+      Solicitar demo gratuita →
+    </a>
+    <a href="#servicios" class="btn-secondary">Ver servicios</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-number">24/7</div>
+    <div class="stat-label">Atención automática sin interrupciones</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">&lt;5s</div>
+    <div class="stat-label">Tiempo de respuesta promedio al paciente</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">0</div>
+    <div class="stat-label">Citas perdidas por falta de respuesta</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="servicios">
+  <p class="section-label">Servicios</p>
+  <h2 class="section-title">Tecnología que trabaja mientras descansas</h2>
+  <p class="section-body">Construimos herramientas digitales a la medida de tu negocio. Sin complicaciones, sin conocimientos técnicos de tu parte.</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">🤖</span>
+      <h3>Asistentes virtuales</h3>
+      <p>Asistentes con inteligencia artificial que atienden a tus clientes, responden preguntas y resuelven solicitudes de forma autónoma las 24 horas.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">📅</span>
+      <h3>Agendamiento automático</h3>
+      <p>Tus clientes agendan, reagendan y confirman citas sin que tengas que intervenir. Integración directa con tu calendario de trabajo.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🔔</span>
+      <h3>Recordatorios inteligentes</h3>
+      <p>Recordatorios personalizados por cliente. Reduce las inasistencias y mantiene tu agenda siempre llena.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">💌</span>
+      <h3>Invitaciones digitales</h3>
+      <p>Invitaciones con confirmación de asistencia para bodas, XV años y eventos infantiles. Todo digitalizado y sin papeleo.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">📊</span>
+      <h3>Panel de control</h3>
+      <p>Visualiza todas las interacciones de tu negocio en tiempo real. Conoce a tus clientes y toma mejores decisiones.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">⚙️</span>
+      <h3>Integración a la medida</h3>
+      <p>¿Tienes una necesidad específica? Desarrollamos soluciones personalizadas para automatizar cualquier proceso de tu negocio.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section class="demo-section" id="demo">
+  <div class="demo-grid">
+    <div>
+      <p class="section-label">En acción</p>
+      <h2 class="section-title">Así trabaja tu nuevo asistente</h2>
+      <p class="section-body">El asistente atiende a tus clientes con lenguaje natural, agenda directamente en tu calendario y les recuerda su cita automáticamente.</p>
+      <ul class="feature-list">
+        <li>Responde preguntas sobre servicios y precios</li>
+        <li>Agenda y reagenda citas sin tu intervención</li>
+        <li>Recordatorios configurables por cliente</li>
+        <li>Procesa mensajes de voz y texto</li>
+        <li>Notifica al responsable sobre nuevos contactos</li>
+      </ul>
+    </div>
+    <div>
+      <div class="chat-mock">
+        <div class="chat-header">
+          <div class="chat-avatar">🦷</div>
+          <div>
+            <div class="chat-name">Consultorio Demo</div>
+            <div class="chat-status">● En línea</div>
+          </div>
+        </div>
+        <div class="chat-body">
+          <div class="bubble bubble-out">
+            Hola! Quisiera saber cuánto cuesta una limpieza dental
+            <div class="bubble-time">10:32 am</div>
+          </div>
+          <div class="bubble bubble-in">
+            ¡Hola! La limpieza dental tiene un costo de $350 a $500 MXN. Incluye eliminación de sarro y pulido. ¿Te gustaría agendar una cita? 😊
+            <div class="bubble-time">10:32 am</div>
+          </div>
+          <div class="bubble bubble-out">
+            Sí, para mañana si hay lugar
+            <div class="bubble-time">10:33 am</div>
+          </div>
+          <div class="bubble bubble-in">
+            ¡Claro! Tenemos disponible mañana a las 9am, 11am y 3pm. ¿Cuál te viene mejor? 📅
+            <div class="bubble-time">10:33 am</div>
+          </div>
+          <div class="bubble bubble-out">
+            A las 11
+            <div class="bubble-time">10:34 am</div>
+          </div>
+          <div class="bubble bubble-in">
+            ¡Perfecto! Para confirmar, ¿me dices tu nombre completo?
+            <div class="bubble-time">10:34 am</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="como-funciona">
+  <p class="section-label">Proceso</p>
+  <h2 class="section-title">Listo en menos de una semana</h2>
+  <p class="section-body">Nos encargamos de toda la configuración técnica. Tú solo nos das la información de tu consultorio.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Consulta inicial</h3>
+      <p>Platicamos sobre tu consultorio: servicios, horarios, precios y cómo funciona tu atención actual.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Configuración</h3>
+      <p>Configuramos el bot con la identidad de tu consultorio y lo conectamos a tu número de WhatsApp y Google Calendar.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Pruebas</h3>
+      <p>Probamos todos los flujos contigo antes de lanzar. Ajustamos lo que necesites hasta que todo funcione perfecto.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h3>En producción</h3>
+      <p>Tu asistente entra en función. Nosotros monitoreamos y te damos soporte continuo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="nosotros">
+  <div class="about-grid">
+    <div>
+      <p class="section-label">Nosotros</p>
+      <div class="divider"></div>
+      <h2 class="section-title">Tecnología hecha en Michoacán, para México</h2>
+      <p class="section-body">Somos un equipo de desarrollo de software especializado en automatización e inteligencia artificial. Trabajamos con plataformas líderes a nivel mundial para garantizar estabilidad, seguridad y escalabilidad en cada solución que entregamos.</p>
+      <p class="section-body">Nuestro enfoque es simple: resolver problemas reales de negocios reales, con tecnología que funciona.</p>
+    </div>
+    <div class="about-visual">
+      <div class="code-comment">// Lo que nos diferencia</div>
+      <br>
+      <div><span class="code-key">infraestructura</span>  <span class="code-val">Nube empresarial</span></div>
+      <div><span class="code-key">mensajería</span>       <span class="code-val">API oficial Meta</span></div>
+      <div><span class="code-key">inteligencia</span>     <span class="code-val">Modelos IA de última generación</span></div>
+      <div><span class="code-key">disponibilidad</span>   <span class="code-val">24/7 · 365 días</span></div>
+      <div><span class="code-key">seguridad</span>        <span class="code-val">Datos cifrados</span></div>
+      <div><span class="code-key">soporte</span>          <span class="code-val">Incluido</span></div>
+      <br>
+      <div class="code-comment">// Presencia</div>
+      <br>
+      <div><span class="code-key">base</span>             <span class="code-val">Michoacán, México</span></div>
+      <div><span class="code-key">cobertura</span>        <span class="code-val">Todo México</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <p class="section-label" style="text-align:center">Empieza hoy</p>
+  <h2 class="section-title">¿Listo para automatizar tu consultorio?</h2>
+  <p class="section-body">La primera consulta es gratuita. Te mostramos el bot funcionando en vivo antes de cualquier compromiso.</p>
+  <a href="https://wa.me/524431660223?text=Hola,%20quiero%20saber%20más%20sobre%20DentalBot" target="_blank" class="btn-primary" style="margin: 0 auto; display:inline-flex;">
+    Solicitar demo gratuita →
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Resuelve<span>360</span></div>
+  <div class="footer-legal">
+    © 2026 Resuelve360. Todos los derechos reservados.<br>
+    Sitio operado por <strong>SERGIO VALLE ALARCÓN</strong>
+  </div>
+  <div class="footer-links">
+    <a href="mailto:contacto@resuelve360.com">Contacto</a>
+    <a href="#privacidad">Privacidad</a>
+  </div>
+</footer>
+
+<!-- PRIVACY ANCHOR -->
+<section id="privacidad" style="padding:48px; background:var(--off); border-top:1px solid var(--border);">
+  <p class="section-label">Aviso de privacidad</p>
+  <h2 style="font-family:'Syne',sans-serif;font-size:22px;margin-bottom:16px;">Aviso de Privacidad Simplificado</h2>
+  <p style="font-size:14px;color:var(--subtle);max-width:680px;line-height:1.8;">
+    <strong style="color:var(--light)">Responsable:</strong> Sergio Valle Alarcón, operando bajo el nombre comercial Resuelve360, con domicilio en Michoacán, México.<br><br>
+    <strong style="color:var(--light)">Datos recabados:</strong> Nombre, número de contacto e información proporcionada voluntariamente para la prestación del servicio.<br><br>
+    <strong style="color:var(--light)">Finalidad:</strong> Prestación del servicio de asistente virtual, agendamiento de citas y comunicación con clientes.<br><br>
+    <strong style="color:var(--light)">Transferencias:</strong> Los datos no se comparten con terceros ajenos al servicio contratado.<br><br>
+    <strong style="color:var(--light)">Contacto:</strong> contacto@resuelve360.com
+  </p>
+</section>
+
+</body>
+</html>
