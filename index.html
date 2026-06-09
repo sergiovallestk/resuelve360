@@ -34,6 +34,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* CONTENEDOR */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
 /* NAV */
 nav {
   position: fixed;
@@ -95,6 +102,10 @@ nav {
   padding: 120px 48px 80px;
   position: relative;
   overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .hero::before {
@@ -207,6 +218,30 @@ nav {
 /* SECTION BASE */
 section {
   padding: 96px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Secciones con fondo full-width necesitan wrapper especial */
+.how, .demo-section {
+  max-width: 100%;
+  padding: 96px 0;
+}
+
+.how > *, .demo-section > * {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.stats {
+  max-width: 100%;
+}
+
+.hero {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .section-label {
@@ -563,7 +598,7 @@ footer {
 <!-- HERO -->
 <section class="hero">
   <p class="hero-label">Automatización · Inteligencia Artificial · México</p>
-  <h1>Tu negocio<br>responde <em>solo.</em><br>Tú creces.</h1>
+  <h1>Tecnología que trabaja.<br>Negocios que <em>escalan.</em></h1>
   <p>Desarrollamos soluciones de automatización con inteligencia artificial para negocios en México. Asistentes virtuales, agendamiento automático y atención 24/7 sin intervención humana.</p>
   <div class="hero-actions">
     <a href="https://wa.me/524431660223" target="_blank" class="btn-primary">
@@ -766,16 +801,17 @@ footer {
 </footer>
 
 <!-- PRIVACY ANCHOR -->
-<section id="privacidad" style="padding:48px; background:var(--off); border-top:1px solid var(--border);">
-  <p class="section-label">Aviso de privacidad</p>
-  <h2 style="font-family:'Syne',sans-serif;font-size:22px;margin-bottom:16px;">Aviso de Privacidad Simplificado</h2>
-  <p style="font-size:14px;color:var(--subtle);max-width:680px;line-height:1.8;">
-    <strong style="color:var(--light)">Responsable:</strong> Sergio Valle Alarcón, operando bajo el nombre comercial Resuelve360, con domicilio en Michoacán, México.<br><br>
-    <strong style="color:var(--light)">Datos recabados:</strong> Nombre, número de contacto e información proporcionada voluntariamente para la prestación del servicio.<br><br>
-    <strong style="color:var(--light)">Finalidad:</strong> Prestación del servicio de asistente virtual, agendamiento de citas y comunicación con clientes.<br><br>
-    <strong style="color:var(--light)">Transferencias:</strong> Los datos no se comparten con terceros ajenos al servicio contratado.<br><br>
-    <strong style="color:var(--light)">Contacto:</strong> contacto@resuelve360.com
-  </p>
+<section id="privacidad" style="padding:48px 20px; background:var(--off); border-top:1px solid var(--border); max-width:100%;">
+  <div style="max-width:760px; margin:0 auto;">
+    <p class="section-label">Aviso de privacidad</p>
+    <h2 style="font-family:'Syne',sans-serif;font-size:22px;margin-bottom:16px;">Aviso de Privacidad Simplificado</h2>
+    <p style="font-size:14px;color:var(--subtle);line-height:1.8;">
+      <strong style="color:var(--light)">Datos recabados:</strong> Nombre, número de contacto e información proporcionada voluntariamente para la prestación del servicio.<br><br>
+      <strong style="color:var(--light)">Finalidad:</strong> Prestación del servicio de asistente virtual, agendamiento de citas y comunicación con clientes.<br><br>
+      <strong style="color:var(--light)">Transferencias:</strong> Los datos no se comparten con terceros ajenos al servicio contratado.<br><br>
+      <strong style="color:var(--light)">Contacto:</strong> contacto@resuelve360.com
+    </p>
+  </div>
 </section>
 
 </body>
