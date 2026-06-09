@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Resuelve360 — Automatización inteligente para negocios</title>
 <meta name="description" content="Resuelve360 desarrolla soluciones de automatización con inteligencia artificial para negocios en México. Asistentes virtuales, agendamiento automático y atención 24/7.">
+<meta name="facebook-domain-verification" content="iumknosekelcqoo969o1a22nhycu5k" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -32,6 +33,17 @@ body {
   color: var(--white);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(79,142,247,0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* CONTENEDOR */
@@ -106,15 +118,6 @@ nav {
   margin: 0 auto;
   box-sizing: border-box;
   width: 100%;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -200px; right: -200px;
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(0,229,160,0.08) 0%, transparent 70%);
-  pointer-events: none;
 }
 
 .hero-label {
